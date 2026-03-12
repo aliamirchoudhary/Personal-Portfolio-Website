@@ -229,6 +229,9 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             z-index: 2;
+            object-fit: cover;
+            object-position: 0% 15%;
+
         }
 
         .profile-img::before {
@@ -1516,6 +1519,11 @@
             background: rgba(0, 119, 255, 0.3);
             color: #ffffff;
         }
+
+        a {
+  word-wrap: break-word;   /* older support */
+  overflow-wrap: break-word; /* modern standard */
+}
     </style>
 </head>
 
