@@ -28,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* Professional Loading Animation - UPDATED: Removed delay */
+        /* Professional Loading Animation */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -64,7 +64,7 @@
             }
         }
 
-        /* Navigation - UPDATED: Improved click efficiency */
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -109,15 +109,7 @@
         .nav-menu {
             list-style: none;
             display: flex;
-            gap: 2rem;
-        }
-
-        /* FIXED NAVBAR LINKS */
-        .nav-menu {
-            list-style: none;
-            display: flex;
             gap: 1.5rem;
-            /* reduced gap for better alignment */
         }
 
         .nav-menu li {
@@ -126,17 +118,14 @@
 
         .nav-menu li a {
             display: inline-block;
-            /* ensures proper clickable box */
             color: #ffffff;
             text-decoration: none;
             font-weight: 500;
             padding: 0.6rem 1.2rem;
-            /* consistent clickable area */
             border-radius: 25px;
             transition: all 0.3s ease;
         }
 
-        /* remove confusing ::before hover overlay */
         .nav-menu li a::before {
             display: none;
         }
@@ -148,7 +137,6 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(0, 119, 255, 0.2);
         }
-
 
         .mobile-menu-btn {
             display: none;
@@ -178,6 +166,54 @@
             margin: 0 auto;
         }
 
+        /* UPDATED: Scrollable sections with snap scrolling */
+        #projects .projects-grid,
+        #services .services-grid {
+            max-height: calc(100vh - 15rem);
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+            scroll-padding: 0;
+        }
+
+        #projects .project-card,
+        #services .service-card {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+
+        #skills .skills-grid {
+            max-height: calc(100vh - 20rem);
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+        }
+
+        /* UPDATED: Custom scrollbar for scrollable sections */
+        #projects .projects-grid::-webkit-scrollbar,
+        #services .services-grid::-webkit-scrollbar,
+        #skills .skills-grid::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #projects .projects-grid::-webkit-scrollbar-track,
+        #services .services-grid::-webkit-scrollbar-track,
+        #skills .skills-grid::-webkit-scrollbar-track {
+            background: rgba(0, 119, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        #projects .projects-grid::-webkit-scrollbar-thumb,
+        #services .services-grid::-webkit-scrollbar-thumb,
+        #skills .skills-grid::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #0077ff, #00d4ff);
+            border-radius: 10px;
+        }
+
+        #projects .projects-grid::-webkit-scrollbar-thumb:hover,
+        #services .services-grid::-webkit-scrollbar-thumb:hover,
+        #skills .skills-grid::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #00d4ff, #0077ff);
+        }
+
         /* Home Section */
         #home {
             display: flex;
@@ -202,12 +238,9 @@
         }
 
         @keyframes float {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translateY(0px) rotate(0deg);
             }
-
             50% {
                 transform: translateY(-20px) rotate(180deg);
             }
@@ -231,7 +264,6 @@
             z-index: 2;
             object-fit: cover;
             object-position: 0% 15%;
-
         }
 
         .profile-img::before {
@@ -259,12 +291,9 @@
         }
 
         @keyframes profileFloat {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translateY(0px);
             }
-
             50% {
                 transform: translateY(-15px);
             }
@@ -274,7 +303,6 @@
             0% {
                 transform: rotate(0deg);
             }
-
             100% {
                 transform: rotate(360deg);
             }
@@ -309,14 +337,10 @@
         }
 
         @keyframes blink {
-
-            0%,
-            50% {
+            0%, 50% {
                 opacity: 1;
             }
-
-            51%,
-            100% {
+            51%, 100% {
                 opacity: 0;
             }
         }
@@ -366,7 +390,6 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -401,7 +424,6 @@
             from {
                 width: 0;
             }
-
             to {
                 width: 80px;
             }
@@ -412,7 +434,6 @@
                 opacity: 0;
                 transform: translateY(-30px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -464,7 +485,7 @@
             text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
         }
 
-        /* Services Section - UPDATED: Clickable cards with modals */
+        /* Services Section */
         #services {
             padding: 8rem 2rem;
         }
@@ -556,7 +577,7 @@
             box-shadow: 0 12px 30px rgba(0, 119, 255, 0.4);
         }
 
-        /* Education Timeline - UPDATED: Added 5 education cards */
+        /* Education Timeline */
         #education {
             background: linear-gradient(135deg, #1a1a1a 0%, #121212 100%);
             padding: 8rem 2rem;
@@ -622,12 +643,9 @@
         }
 
         @keyframes pulse {
-
-            0%,
-            100% {
+            0%, 100% {
                 box-shadow: 0 0 20px rgba(0, 119, 255, 0.6);
             }
-
             50% {
                 box-shadow: 0 0 30px rgba(0, 119, 255, 1);
             }
@@ -762,6 +780,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            scroll-snap-align: start;
         }
 
         .skill-item::before {
@@ -829,7 +848,6 @@
             0% {
                 transform: translateX(-100%);
             }
-
             100% {
                 transform: translateX(100%);
             }
@@ -961,7 +979,7 @@
             box-shadow: 0 12px 30px rgba(0, 119, 255, 0.4);
         }
 
-        /* Modal Styles - UPDATED: For service modals */
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -988,7 +1006,6 @@
             from {
                 opacity: 0;
             }
-
             to {
                 opacity: 1;
             }
@@ -1021,6 +1038,7 @@
             font-size: 2rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            z-index: 10;
         }
 
         .modal-close:hover {
@@ -1228,18 +1246,15 @@
         }
 
         @keyframes socialBounce {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translateY(-8px) scale(1.1);
             }
-
             50% {
                 transform: translateY(-15px) scale(1.15);
             }
         }
 
-        /* Footer - UPDATED: Added quick links */
+        /* Footer */
         footer {
             background: linear-gradient(135deg, #0a0a0a, #121212);
             padding: 3rem 2rem 2rem;
@@ -1295,7 +1310,6 @@
             box-shadow: 0 5px 15px rgba(0, 119, 255, 0.4);
         }
 
-        /* NEW: Footer Quick Links */
         .footer-quick-links {
             grid-column: 1 / -1;
             display: flex;
@@ -1465,7 +1479,6 @@
                 opacity: 0;
                 transform: translateX(-100px);
             }
-
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -1477,7 +1490,6 @@
                 opacity: 0;
                 transform: translateX(100px);
             }
-
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -1489,7 +1501,6 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1521,19 +1532,19 @@
         }
 
         a {
-  word-wrap: break-word;   /* older support */
-  overflow-wrap: break-word; /* modern standard */
-}
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
     </style>
 </head>
 
 <body>
-    <!-- Loading Screen - UPDATED: Removed delay -->
+    <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loader"></div>
     </div>
 
-    <!-- Navigation - UPDATED: Improved click efficiency -->
+    <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">Muhammad Ali Aamir</a>
@@ -1559,7 +1570,7 @@
         </div>
         <div class="home-content">
             <h1 class="home-name">Muhammad Ali Aamir</h1>
-            <p class="home-title">Data Science & AI Enthusiast | Front-End Developer<span class="typing-cursor">|</span>
+            <p class="home-title">Data Science & AI Enthusiast | Full Stack Developer | Founder of WebCraft<span class="typing-cursor">|</span>
             </p>
             <a href="#" class="cta-button" id="resumeBtn">
                 <i class="fas fa-download"></i>
@@ -1574,7 +1585,7 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <p>I'm an aspiring <span class="about-highlight">Data Scientist</span>, <span class="about-highlight">AI
-                        Enthusiast</span> and passionate <span class="about-highlight">Front-End
+                        Enthusiast</span> and passionate <span class="about-highlight">Full Stack
                         Developer</span> with an insatiable curiosity for technology and
                     innovation, exploring the intersections of machine learning, artificial intelligence, and modern web
                     development.</p>
@@ -1585,7 +1596,7 @@
                     complex problems into clean, efficient code and building digital experiences that are both powerful
                     and elegant.</p>
 
-                <p>My journey in technology is driven by a deep passion for creating meaningful digital experiences.
+                <p>I am also the founder of <span class="about-highlight">Webcraft</span>, a professional digital brand I founded to provide high-performance, end-to-end web solutions for service-oriented businesses. My journey in technology is driven by a deep passion for creating meaningful digital experiences.
                     Whether it's training models on real-world data, developing responsive web applications, diving into
                     machine learning algorithms, or
                     exploring the latest in AI, I approach every project with enthusiasm and dedication to excellence.
@@ -1596,22 +1607,50 @@
                     <p>
                         <i class="fas fa-envelope"></i> <a
                             href="mailto:aliamirchoudhary@gmail.com">aliamirchoudhary@gmail.com</a> |
-                        <i class="fab fa-linkedin"></i> <a href="www.linkedin.com/in/muhammad-ali-aamir2558">LinkedIn
-                            Profile</a>
+                        <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/muhammad-ali-aamir2558">LinkedIn
+                            Profile</a> |
+                        <i class="fas fa-globe"></i> <a href="https://webcraft-dev.vercel.app" target="_blank">Webcraft</a>
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section - UPDATED: Clickable cards with modals -->
+    <!-- Services Section -->
     <section id="services">
         <div class="container">
             <h2 class="section-title">What I Offer</h2>
             <div class="services-grid">
-                <div class="service-card" onclick="openServiceModal('service1')">
+                <!-- Card 1 -->
+                <div class="service-card" onclick="openModal('serviceModal1')">
                     <div class="service-icon">
                         <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="service-title">Full Stack Web Development</h3>
+                    <p class="service-description">I will provide full stack high-performance, end-to-end web solutions for service-oriented businesses using React, Node.js, Flask, or MERN stack. From responsive frontend designs to scalable backend architectures.</p>
+                    <a href="https://webcraft-dev.vercel.app" class="service-btn" target="_blank" onclick="event.stopPropagation()">
+                        <i class="fas fa-external-link-alt"></i>
+                        Visit
+                    </a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-card" onclick="openModal('serviceModal2')">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="service-title">Design to Web</h3>
+                    <p class="service-description">I will build a pixel perfect responsive website from Figma to React or Tailwind. As a technical developer focused on logical optimization, I don't just "build" pages — I engineer them for speed and responsiveness.</p>
+                    <a href="https://www.fiverr.com/s/2K2ja6V" class="service-btn" target="_blank" onclick="event.stopPropagation()">
+                        <i class="fas fa-external-link-alt"></i>
+                        View on Fiverr
+                    </a>
+                </div>
+
+                <!-- Card 3 - UNCHANGED -->
+                <div class="service-card" onclick="openModal('serviceModal3')">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
                     </div>
                     <h3 class="service-title">Front-End Web Development</h3>
                     <p class="service-description">I will create responsive landing pages and templates with HTML, CSS,
@@ -1624,39 +1663,11 @@
                         View on Fiverr
                     </a>
                 </div>
-
-                <!-- <div class="service-card" onclick="openServiceModal('service2')">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 class="service-title">Custom Web Applications</h3>
-                    <p class="service-description">Full-stack web applications with modern frameworks, database
-                        integration, and seamless user experiences. Scalable solutions for businesses of all sizes.</p>
-                    <a href="https://fiverr.com/[yourprofile]" class="service-btn" target="_blank"
-                        onclick="event.stopPropagation()">
-                        <i class="fas fa-external-link-alt"></i>
-                        View on Fiverr
-                    </a>
-                </div>
-
-                <div class="service-card" onclick="openServiceModal('service3')">
-                    <div class="service-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3 class="service-title">API Integration & Development</h3>
-                    <p class="service-description">Seamless API integrations and custom API development to connect your
-                        applications with third-party services and enhance functionality.</p>
-                    <a href="https://fiverr.com/[yourprofile]" class="service-btn" target="_blank"
-                        onclick="event.stopPropagation()">
-                        <i class="fas fa-external-link-alt"></i>
-                        View on Fiverr
-                    </a>
-                </div> -->
             </div>
         </div>
     </section>
 
-    <!-- Education Section - UPDATED: Added 5 education cards -->
+    <!-- Education Section -->
     <section id="education">
         <div class="container">
             <h2 class="section-title">Education</h2>
@@ -1673,8 +1684,11 @@
                                 <li>Object Oriented Programming</li>
                                 <li>Multi-Variable Calculus</li>
                                 <li>Computer Organization and Assembly Language</li>
+                                <li>Database Systems</li>
                                 <li>Calculus and Analutical Geometry</li>
+                                <li>Operating Systems</li>
                                 <li>Introduction to Data Sciences</li>
+                                <li>Linear Algebra</li>
                                 <li>Discrete Mathematics</li>
                             </ul>
                         </details>
@@ -1684,7 +1698,7 @@
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-year">2023 - 2024</div>
-                        <h3 class="timeline-degree">Front-End Web Development</h3>
+                        <h3 class="timeline-degree">Full Stack Web Development</h3>
                         <p class="timeline-institution">Self Study and Online Resources</p>
                         <details>
                             <summary>Relevant Courses & Achievements</summary>
@@ -1692,6 +1706,8 @@
                                 <li>HTML 5</li>
                                 <li>CSS</li>
                                 <li>JavaScript</li>
+                                <li>React.js</li>
+                                <li>Tailwind CSS</li>
                                 <li>DOM Manipulations</li>
                                 <li>AI Prompting</li>
                             </ul>
@@ -1725,7 +1741,6 @@
                                 <li>Physics</li>
                                 <li>Organic Chemistry</li>
                                 <li>Physical Chemistry</li>
-
                             </ul>
                         </details>
                     </div>
@@ -1748,7 +1763,6 @@
                         </details>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -1773,6 +1787,13 @@
                         <div class="skill-percentage">93%</div>
                     </div>
                     <div class="skill-item">
+                        <div class="skill-name">C</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                        <div class="skill-percentage">90%</div>
+                    </div>
+                    <div class="skill-item">
                         <div class="skill-name">Python</div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="88%"></div>
@@ -1787,6 +1808,27 @@
                         <div class="skill-percentage">85%</div>
                     </div>
                     <div class="skill-item">
+                        <div class="skill-name">SQL</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="87%"></div>
+                        </div>
+                        <div class="skill-percentage">87%</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">React</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="82%"></div>
+                        </div>
+                        <div class="skill-percentage">82%</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Flask</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80%"></div>
+                        </div>
+                        <div class="skill-percentage">80%</div>
+                    </div>
+                    <div class="skill-item">
                         <div class="skill-name">MultiVariable Calculus</div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="82%"></div>
@@ -1794,11 +1836,32 @@
                         <div class="skill-percentage">82%</div>
                     </div>
                     <div class="skill-item">
+                        <div class="skill-name">Linear Algebra</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                        <div class="skill-percentage">85%</div>
+                    </div>
+                    <div class="skill-item">
                         <div class="skill-name">Assembly Language</div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="79%"></div>
                         </div>
                         <div class="skill-percentage">79%</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Model Training</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="83%"></div>
+                        </div>
+                        <div class="skill-percentage">83%</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Machine Learning</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="84%"></div>
+                        </div>
+                        <div class="skill-percentage">84%</div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-name"> Git / Github</div>
@@ -1864,37 +1927,124 @@
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
-                <div class="project-card" onclick="openModal('project1')">
+                <!-- PROJECT 1 -->
+                <div class="project-card" onclick="openModal('criclyticsModal')">
+                    <h3 class="project-name">Criclytics</h3>
+                    <p class="project-description">Criclytics is an intelligent cricket analytics platform that transforms historical match data into context-aware probabilities and interpretable machine-learning insights for players, teams, and venues.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/aliamirchoudhary/Criclytics.git" class="project-btn" target="_blank" onclick="event.stopPropagation()">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                        <a href="#" class="project-btn" target="_blank" onclick="event.stopPropagation()">
+                            <i class="fas fa-globe"></i>
+                            Visit
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 2 -->
+                <div class="project-card" onclick="openModal('fashionModal')">
+                    <h3 class="project-name">Fashion Image Classifier</h3>
+                    <p class="project-description">Clothing image classifier that predicts fashion categories (T-shirts, Shirts, Dresses, Pants, Shoes, Jackets, Sweaters, Tops) using a CNN (92.25% accuracy) and Random Forest (87.56% accuracy).</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Jupyter</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">Streamlit</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/aliamirchoudhary/Fashion-Image-Classifier.git" class="project-btn" target="_blank" onclick="event.stopPropagation()">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 3 -->
+                <div class="project-card" onclick="openModal('webcraftModal')">
+                    <h3 class="project-name">Webcraft</h3>
+                    <p class="project-description">WebCraft — my freelance web developer portfolio with animated UI, service showcases, order & contact forms with real email delivery via Gmail SMTP, and serverless deployment.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Node.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/aliamirchoudhary/webcraft.git" class="project-btn" target="_blank" onclick="event.stopPropagation()">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                        <a href="https://webcraft-dev.vercel.app" class="project-btn" target="_blank" onclick="event.stopPropagation()">
+                            <i class="fas fa-globe"></i>
+                            Visit
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 4 -->
+                <div class="project-card" onclick="openModal('flappyModal')">
+                    <h3 class="project-name">Flappy Bird Game</h3>
+                    <p class="project-description">A faithful recreation of the iconic Flappy Bird game written in 16-bit assembly language for iAPX8088 processors. Navigate a bird through procedurally generated pipe obstacles with physics-based gravity and flap mechanics.</p>
+                    <div class="project-tags">
+                        <span class="tag">Assembly Language</span>
+                        <span class="tag">iAPX8088</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/aliamirchoudhary/Flappy-Bird---IAPX8088-Assembly-Game.git" class="project-btn" target="_blank" onclick="event.stopPropagation()">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 5 -->
+                <div class="project-card" onclick="openModal('bubbleModal')">
+                    <h3 class="project-name">Bubble Shooter Game</h3>
+                    <p class="project-description">A classic arcade-style bubble shooter game written in 16-bit assembly language for iAPX8088 processors. Control a shooter at the bottom of the screen to pop falling green bubbles before they reach you.</p>
+                    <div class="project-tags">
+                        <span class="tag">Assembly Language</span>
+                        <span class="tag">iAPX8088</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/aliamirchoudhary/Bubble-Shooter---IAPX8088-Assembly-Game.git" class="project-btn" target="_blank" onclick="event.stopPropagation()">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 6 - EXISTING -->
+                <div class="project-card" onclick="openModal('project1Modal')">
                     <h3 class="project-name">Solar Panel System Predictor</h3>
                     <p class="project-description">Developed a C++ console-based solar energy system predictor. It
                         estimates optimal solar panel configurations, including panel types, inverters, batteries, and
-                        wiring, based on user inputs like house area, and energy consumption. Provides detailed cost
-                        estimates, enabling homeowners and solar enthusiasts to explore renewable energy options.</p>
+                        wiring, based on user inputs like house area, and energy consumption.</p>
                     <div class="project-tags">
                         <span class="tag">C++</span>
                         <span class="tag">File I/O</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/aliamirchoudhary/Solar-Panel-System-Predictor.git
-" class="project-btn" target="_blank" onclick="event.stopPropagation()">
+                        <a href="https://github.com/aliamirchoudhary/Solar-Panel-System-Predictor.git" class="project-btn" target="_blank" onclick="event.stopPropagation()">
                             <i class="fab fa-github"></i>
                             GitHub
                         </a>
-                        <button class="project-btn" onclick="openModal('project1')">
-                            <i class="fas fa-eye"></i>
-                            View Details
-                        </button>
                     </div>
                 </div>
 
-                <div class="project-card" onclick="openModal('project2')">
-                    <h3 class="project-name">ReLive Social Media App
-                    </h3>
+                <!-- PROJECT 7 - EXISTING -->
+                <div class="project-card" onclick="openModal('project2Modal')">
+                    <h3 class="project-name">ReLive Social Media App</h3>
                     <p class="project-description">The ReLive App is a simple console-based social network simulation
                         built entirely in C++ without using built-in functions or STL containers. This project reflects
-                        the core concepts of OOP including inheritance, encapsulation, and polymorphism, manual data
-                        handling, and structured logic design efficiently managing user data and connections.
-                    </p>
+                        the core concepts of OOP including inheritance, encapsulation, and polymorphism.</p>
                     <div class="project-tags">
                         <span class="tag">C++</span>
                         <span class="tag">OOP</span>
@@ -1903,15 +2053,10 @@
                         <span class="tag">Polymorphism</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/aliamirchoudhary/ReLive-Social-Media-App.git
-" class="project-btn" target="_blank" onclick="event.stopPropagation()">
+                        <a href="https://github.com/aliamirchoudhary/ReLive-Social-Media-App.git" class="project-btn" target="_blank" onclick="event.stopPropagation()">
                             <i class="fab fa-github"></i>
                             GitHub
                         </a>
-                        <button class="project-btn" onclick="openModal('project2')">
-                            <i class="fas fa-eye"></i>
-                            View Details
-                        </button>
                     </div>
                 </div>
             </div>
@@ -1923,8 +2068,7 @@
         <div class="container">
             <div class="contact-header">
                 <h2 class="contact-cta">Let's Bring Your Ideas to Life</h2>
-                <p class="contact-subtitle">Ready to start your next project? Let's discuss how we can work together.
-                </p>
+                <p class="contact-subtitle">Ready to start your next project? Let's discuss how we can work together.</p>
             </div>
 
             <div class="contact-container">
@@ -1957,27 +2101,22 @@
                         <a href="tel:+923283173130" class="social-link" title="Phone">
                             <i class="fas fa-phone"></i>
                         </a>
-                        <a href="https://www.facebook.com/share/177cJ6ccx3/
-" class="social-link" title="Facebook">
+                        <a href="https://www.facebook.com/share/177cJ6ccx3/" class="social-link" title="Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.instagram.com/maacmarketingservice/
-" class="social-link" title="Instagram">
+                        <a href="https://www.instagram.com/maacmarketingservice/" class="social-link" title="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
                         <a href="https://www.fiverr.com/s/2Kg9QKV" class="social-link" title="Fiverr">
                             <i class="fas fa-dollar-sign"></i>
                         </a>
-                        <a href="www.linkedin.com/in/muhammad-ali-aamir2558
-" class="social-link" title="LinkedIn">
+                        <a href="https://www.linkedin.com/in/muhammad-ali-aamir2558" class="social-link" title="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://github.com/aliamirchoudhary
-" class="social-link" title="GitHub">
+                        <a href="https://github.com/aliamirchoudhary" class="social-link" title="GitHub">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://x.com/maacaffliate?t=vc7ALr4cu8ciZkAfUTeR5A&s=09
-" class="social-link" title="Twitter/X">
+                        <a href="https://x.com/maacaffliate?t=vc7ALr4cu8ciZkAfUTeR5A&s=09" class="social-link" title="Twitter/X">
                             <i class="fab fa-twitter"></i>
                         </a>
                     </div>
@@ -1997,7 +2136,7 @@
         </div>
     </section>
 
-    <!-- Footer - UPDATED: Added quick links -->
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-left">
@@ -2007,21 +2146,17 @@
                 <p>Crafted with passion & code</p>
             </div>
             <div class="footer-right">
-                <a href="www.linkedin.com/in/muhammad-ali-aamir2558
-" class="footer-social" title="LinkedIn">
+                <a href="https://www.linkedin.com/in/muhammad-ali-aamir2558" class="footer-social" title="LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://github.com/aliamirchoudhary
-" class="footer-social" title="GitHub">
+                <a href="https://github.com/aliamirchoudhary" class="footer-social" title="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://www.fiverr.com/s/2Kg9QKV
-" class="footer-social" title="Fiverr">
+                <a href="https://www.fiverr.com/s/2Kg9QKV" class="footer-social" title="Fiverr">
                     <i class="fas fa-dollar-sign"></i>
                 </a>
             </div>
 
-            <!-- NEW: Quick Links -->
             <div class="footer-quick-links">
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
@@ -2034,10 +2169,368 @@
         </div>
     </footer>
 
-    <!-- Project Modals -->
+    <!-- SERVICE MODALS -->
+    <div id="serviceModal1" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('serviceModal1')">&times;</button>
+            <h2 class="modal-title">Full Stack Web Development</h2>
+            <div class="modal-description">
+                <p>I will provide full stack high-performance, end-to-end web solutions for service-oriented businesses using React, Node.js, Flask, or MERN stack. From responsive frontend designs to scalable backend architectures, database integration, and deployment — I deliver complete solutions that drive business growth.</p>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">What I Offer:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>Full-stack development with React, Vue.js, or Next.js frontend</li>
+                    <li>Scalable backend APIs using Node.js/Express or Python/Flask</li>
+                    <li>Database design and management (DB, MSSQL)</li>
+                    <li>User authentication, authorization, and security implementation</li>
+                    <li>Cloud deployment on AWS, Google Cloud, or Vercel</li>
+                    <li>Performance optimization and SEO</li>
+                </ul>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Perfect For:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>SaaS platforms and business applications</li>
+                    <li>E-commerce websites with complex features</li>
+                    <li>Booking and scheduling platforms</li>
+                    <li>Social networking applications</li>
+                </ul>
+            </div>
+            <div class="modal-details">
+                <p><strong>Technologies:</strong> React, Node.js, Flask, MSSQL</p>
+                <p><strong>Starting at:</strong> $299 for basic applications</p>
+                <p><strong>Delivery Time:</strong> 1-3 weeks depending on complexity</p>
+                <a href="https://webcraft-dev.vercel.app" class="project-btn" target="_blank" style="margin-top: 1.5rem;">
+                    <i class="fas fa-external-link-alt"></i>
+                    Visit
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="serviceModal2" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('serviceModal2')">&times;</button>
+            <h2 class="modal-title">Design to Web</h2>
+            <div class="modal-description">
+                <p>I will build a pixel perfect responsive website from Figma to React or Tailwind. As a technical developer focused on logical optimization, I don't just "build" pages — I engineer them for speed and responsiveness. Whether it's a modern landing page or a complex React application, I ensure it looks identical to your design on all devices.</p>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">What you will get:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>Figma to React / Next.js conversion (High-fidelity)</li>
+                    <li>Fully responsive web design using Tailwind CSS</li>
+                    <li>Clean, modular, and well-commented code</li>
+                    <li>Interactive UI elements with smooth animations</li>
+                    <li>Pixel perfect implementation & cross-browser compatibility</li>
+                    <li>Performance optimized with lazy loading and code splitting</li>
+                    <li>SEO-friendly semantic HTML structure</li>
+                    <li>Mobile-first approach with responsive breakpoints</li>
+                </ul>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Why Choose Me:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>Technical precision with attention to design details</li>
+                    <li>Fast turnaround with professional quality</li>
+                    <li>Clean code that's easy to maintain and scale</li>
+                    <li>Direct communication and project transparency</li>
+                </ul>
+            </div>
+            <div class="modal-details">
+                <p><strong>Technologies:</strong> React, Next.js, Tailwind CSS, TypeScript</p>
+                <p><strong>Starting at:</strong> $25 for simple landing pages</p>
+                <p><strong>Delivery Time:</strong> 2-5 days</p>
+                <a href="https://www.fiverr.com/s/2K2ja6V" class="project-btn" target="_blank" style="margin-top: 1.5rem;">
+                    <i class="fas fa-external-link-alt"></i>
+                    View on Fiverr
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="serviceModal3" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('serviceModal3')">&times;</button>
+            <h2 class="modal-title">Front-End Web Development</h2>
+            <div class="modal-description">
+                <p>I will create responsive landing pages and templates with HTML, CSS, JS and Bootstrap that look modern, load fast, and work perfectly on every device. Whether you need a sleek startup landing page, a product launch site, or a personal portfolio, I deliver clean, hand-coded solutions with attention to detail.</p>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">What I Offer:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>Pixel-perfect, mobile-first design using HTML5, CSS3, JavaScript, and Bootstrap</li>
+                    <li>Custom web application development</li>
+                    <li>Fully responsive layout tested on desktop, tablet, and mobile</li>
+                    <li>SEO optimization for better search engine visibility</li>
+                    <li>Cross-browser compatibility (Chrome, Safari, Firefox, Edge)</li>
+                    <li>Semantic, well-commented code ready for easy edits</li>
+                    <li>Optional contact forms, newsletter/opt-in integration, and smooth animations</li>
+                </ul>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Technologies I Use:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>HTML5</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Bootstrap</li>
+                    <li>Tailwind</li>
+                </ul>
+            </div>
+            <div class="modal-details">
+                <p><strong>Starting at:</strong> $80 for basic websites</p>
+                <p><strong>Delivery Time:</strong> 2-7 days for standard sites</p>
+                <p><strong>Revisions:</strong> 5</p>
+                <a href="http://www.fiverr.com/s/kLyWvEy" class="project-btn" target="_blank" style="margin-top: 1.5rem;">
+                    <i class="fas fa-external-link-alt"></i>
+                    Order on Fiverr
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT MODALS -->
+    <div id="criclyticsModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('criclyticsModal')">&times;</button>
+            <h2 class="modal-title">Criclytics</h2>
+            <div class="modal-description">
+                <p>Criclytics is an intelligent cricket analytics platform that transforms historical match data into context-aware probabilities and interpretable machine-learning insights for players, teams, and venues. Built to provide cricket enthusiasts, analysts, and fantasy league players with data-driven predictions and comprehensive performance analysis.</p>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Key Features:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>Player performance prediction using historical statistics and match context</li>
+                    <li>Team win probability calculator with venue-specific adjustments</li>
+                    <li>Head-to-head analysis between players and teams</li>
+                    <li>Venue impact assessment on player and team performance</li>
+                    <li>Machine learning models trained on extensive cricket match database</li>
+                    <li>Real-time probability updates based on match progression</li>
+                </ul>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Technical Challenges Solved:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>Implemented context-aware ML models that consider venue, opposition, and match conditions</li>
+                    <li>Designed efficient data pipeline to process and analyze thousands of historical matches</li>
+                    <li>Created feature engineering techniques to capture cricketing context (pitch conditions, weather, player form)</li>
+                    <li>Built interactive web interface for seamless user experience with complex data</li>
+                    <li>Optimized model inference for real-time probability calculations</li>
+                </ul>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Impact:</h4>
+                <p style="color: #cccccc; line-height: 1.8;">Criclytics provides cricket enthusiasts with professional-grade analytics previously available only to professional teams, democratizing access to data-driven cricket insights and enhancing fantasy league decision-making.</p>
+            </div>
+            <div class="modal-details">
+                <p><strong>Technologies:</strong> Python, Machine Learning, HTML, CSS, JavaScript</p>
+                <p><strong>Development Time:</strong> 4 months</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="https://github.com/aliamirchoudhary/Criclytics.git" class="project-btn" target="_blank" style="margin-right: 1rem;">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                    <a href="#" class="project-btn" target="_blank">
+                        <i class="fas fa-globe"></i>
+                        Visit
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="fashionModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('fashionModal')">&times;</button>
+            <h2 class="modal-title">Fashion Image Classifier</h2>
+            <div class="modal-description">
+                <p>An advanced clothing image classifier that accurately predicts fashion categories including T-shirts, Shirts, Dresses, Pants, Shoes, Jackets, Sweaters, and Tops. Built using deep learning (CNN) achieving 92.25% accuracy and traditional machine learning (Random Forest) with 87.56% accuracy. Features a user-friendly Streamlit web interface for real-time predictions.</p>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Key Features:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>Dual model architecture: CNN (TensorFlow/Keras) and Random Forest (scikit-learn)</li>
+                    <li>92.25% classification accuracy with convolutional neural network</li>
+                    <li>Interactive Streamlit web interface for image upload and prediction</li>
+                    <li>Real-time image processing and category prediction</li>
+                    <li>Support for 8 distinct fashion categories</li>
+                    <li>Model comparison dashboard showing performance metrics</li>
+                    <li>Confidence score display for each prediction</li>
+                    <li>Batch processing capability for multiple images</li>
+                </ul>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Technical Challenges Solved:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>Implemented transfer learning with pre-trained networks to improve accuracy</li>
+                    <li>Designed custom CNN architecture optimized for fashion image recognition</li>
+                    <li>Handled class imbalance through data augmentation and stratified sampling</li>
+                    <li>Created efficient image preprocessing pipeline for consistent results</li>
+                    <li>Optimized model size for fast inference without sacrificing accuracy</li>
+                    <li>Built intuitive UI/UX for non-technical users to leverage ML models</li>
+                </ul>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Applications:</h4>
+                <p style="color: #cccccc; line-height: 1.8;">This classifier can be integrated into e-commerce platforms for automatic product categorization, fashion recommendation systems, inventory management, and visual search features, significantly reducing manual labeling effort and improving customer experience.</p>
+            </div>
+            <div class="modal-details">
+                <p><strong>Technologies:</strong> Python, TensorFlow, Keras, scikit-learn, Streamlit, OpenCV, NumPy, Pandas</p>
+                <p><strong>Model Performance:</strong> CNN: 92.25% | Random Forest: 87.56%</p>
+                <p><strong>Dataset:</strong> Fashion-MNIST and custom curated images</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="https://github.com/aliamirchoudhary/Fashion-Image-Classifier.git" class="project-btn" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="webcraftModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('webcraftModal')">&times;</button>
+            <h2 class="modal-title">Webcraft</h2>
+            <div class="modal-description">
+                <p>WebCraft is my professional freelance web developer portfolio featuring animated UI, comprehensive service showcases, fully functional order and contact forms with real email delivery via Gmail SMTP, and serverless deployment on Vercel. A complete business presence demonstrating full-stack capabilities.</p>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Key Features:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>Modern, animated UI with smooth scroll effects and micro-interactions</li>
+                    <li>Fully functional contact and order forms with Gmail SMTP integration</li>
+                    <li>Real-time email notifications for new inquiries and orders</li>
+                    <li>Service showcase with detailed pricing and package information</li>
+                    <li>Project portfolio with filterable categories</li>
+                    <li>Testimonials section with client reviews</li>
+                    <li>Serverless architecture deployed on Vercel</li>
+                    <li>Fully responsive design optimized for all devices</li>
+                    <li>SEO optimized with meta tags and semantic HTML</li>
+                    <li>Custom domain integration with SSL certificate</li>
+                </ul>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Technical Challenges Solved:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>Implemented secure Gmail SMTP with OAuth2 authentication for reliable email delivery</li>
+                    <li>Built serverless functions in Node.js for form processing without backend server</li>
+                    <li>Created custom animations using CSS and JavaScript for professional polish</li>
+                    <li>Optimized performance with lazy loading and code splitting</li>
+                    <li>Implemented form validation and spam protection</li>
+                    <li>Designed mobile-first responsive layout that works flawlessly across devices</li>
+                    <li>Set up CI/CD pipeline for automatic deployments on code push</li>
+                </ul>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Business Impact:</h4>
+                <p style="color: #cccccc; line-height: 1.8;">WebCraft serves as both a portfolio and a lead generation platform, successfully converting visitors into clients through strategic CTAs, trust-building elements, and seamless inquiry process. The professional presentation has directly contributed to securing multiple high-value projects.</p>
+            </div>
+            <div class="modal-details">
+                <p><strong>Technologies:</strong> HTML, CSS, JavaScript, Node.js, Gmail SMTP API, Vercel</p>
+                <p><strong>Features:</strong> Real email delivery, Serverless functions, Responsive design, SEO optimized</p>
+                <p><strong>Performance:</strong> 95+ Lighthouse score, < 2s load time</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="https://github.com/aliamirchoudhary/webcraft.git" class="project-btn" target="_blank" style="margin-right: 1rem;">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                    <a href="https://webcraft-dev.vercel.app" class="project-btn" target="_blank">
+                        <i class="fas fa-globe"></i>
+                        Visit
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="flappyModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('flappyModal')">&times;</button>
+            <h2 class="modal-title">Flappy Bird Game</h2>
+            <div class="modal-description">
+                <p>A faithful recreation of the iconic Flappy Bird game written entirely in 16-bit assembly language for iAPX8088 processors. This project demonstrates low-level programming mastery with physics-based gravity simulation, procedurally generated obstacles, smooth scrolling graphics, and real-time score tracking—all implemented without high-level language abstractions.</p>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Key Features:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>Complete game loop with collision detection written in pure assembly</li>
+                    <li>Physics-based gravity and flap mechanics for realistic bird movement</li>
+                    <li>Procedurally generated pipe obstacles with randomized heights</li>
+                    <li>Smooth scrolling background with parallax effect</li>
+                    <li>Real-time score tracking and display</li>
+                    <li>Progressive difficulty increase as score advances</li>
+                    <li>Keyboard controls with responsive input handling</li>
+                    <li>Game over detection with restart functionality</li>
+                    <li>VGA graphics mode for colorful visual display</li>
+                </ul>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Technical Challenges Solved:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>Implemented fixed-point arithmetic for smooth gravity simulation without floating-point unit</li>
+                    <li>Designed efficient sprite rendering system using direct VGA memory manipulation</li>
+                    <li>Created collision detection algorithms optimized for 8088 instruction set</li>
+                    <li>Built pseudo-random number generator for obstacle variation</li>
+                    <li>Managed memory constraints with careful register allocation and stack usage</li>
+                    <li>Optimized rendering loop to maintain consistent frame rate on limited hardware</li>
+                    <li>Implemented interrupt handling for keyboard input without blocking game logic</li>
+                </ul>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Learning Outcomes:</h4>
+                <p style="color: #cccccc; line-height: 1.8;">This project provided deep understanding of computer architecture, CPU instruction sets, memory management, and graphics programming at the hardware level. It demonstrates the ability to create complex interactive applications with severe resource constraints, a skill invaluable for embedded systems and performance-critical software development.</p>
+            </div>
+            <div class="modal-details">
+                <p><strong>Technologies:</strong> 16-bit x86 Assembly Language, IAPX8088 Architecture, VGA Graphics</p>
+                <p><strong>Complexity:</strong> 1000+ lines of pure assembly code</p>
+                <p><strong>Development Tools:</strong> NASM, DOSBox, 8088 Emulator</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="https://github.com/aliamirchoudhary/Flappy-Bird---IAPX8088-Assembly-Game.git" class="project-btn" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bubbleModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('bubbleModal')">&times;</button>
+            <h2 class="modal-title">Bubble Shooter Game</h2>
+            <div class="modal-description">
+                <p>A classic arcade-style bubble shooter game written entirely in 16-bit assembly language for IAPX8088 processors. Players control a shooter at the bottom of the screen to pop falling green bubbles before they reach the player. Features real-time graphics rendering, smooth keyboard controls, interactive menu system, and increasing difficulty levels—all implemented in low-level assembly code.</p>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Key Features:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>Interactive main menu with start, instructions, and exit options</li>
+                    <li>Real-time graphics rendering using VGA mode 13h (320x200, 256 colors)</li>
+                    <li>Smooth horizontal shooter movement with keyboard controls</li>
+                    <li>Falling bubble mechanics with collision detection</li>
+                    <li>Shooting projectile system with precise trajectory calculation</li>
+                    <li>Score tracking and display system</li>
+                    <li>Lives counter with game over condition</li>
+                    <li>Progressive difficulty with faster bubble speeds</li>
+                </ul>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Technical Challenges Solved:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>Implemented efficient sprite rendering without sprite libraries or graphics APIs</li>
+                    <li>Designed collision detection system using bounding box algorithms in assembly</li>
+                    <li>Created smooth animation loops synchronized with system timer interrupts</li>
+                    <li>Built keyboard input handler using BIOS interrupts with non-blocking reads</li>
+                    <li>Managed multiple moving objects (bubbles, projectiles) with limited CPU cycles</li>
+                    <li>Optimized memory access patterns for VGA buffer to prevent flickering</li>
+                    <li>Implemented game state machine for menu, gameplay, and game over screens</li>
+                    <li>Developed pseudo-random number generation for bubble spawn positions</li>
+                </ul>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Educational Value:</h4>
+                <p style="color: #cccccc; line-height: 1.8;">This project demonstrates mastery of low-level programming concepts including direct hardware manipulation, interrupt handling, memory-mapped I/O, and algorithmic optimization under severe resource constraints. It showcases the ability to build complete interactive applications without modern frameworks or high-level abstractions, providing deep insights into computer architecture and real-time systems programming.</p>
+            </div>
+            <div class="modal-details">
+                <p><strong>Technologies:</strong> 16-bit x86 Assembly Language, IAPX8088 Processor, VGA Graphics Mode 13h</p>
+                <p><strong>Code Size:</strong> 800+ lines of assembly code</p>
+                <p><strong>Development Tools:</strong> NASM, DOSBox, 8088 Emulator</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="https://github.com/aliamirchoudhary/Bubble-Shooter---IAPX8088-Assembly-Game.git" class="project-btn" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXISTING PROJECT MODALS - UNCHANGED -->
     <div id="project1Modal" class="modal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('project1')">&times;</button>
+            <button class="modal-close" onclick="closeModal('project1Modal')">&times;</button>
             <h2 class="modal-title">Solar Panel System Predictor</h2>
             <div class="modal-description">
                 <p>Developed a C++ console-based solar energy system predictor. It estimates optimal solar panel
@@ -2067,21 +2560,25 @@
             </div>
             <div class="modal-details">
                 <p><strong>Technologies:</strong> C++, File I/O for persistent data, Input Validation</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="https://github.com/aliamirchoudhary/Solar-Panel-System-Predictor.git" class="project-btn" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
     <div id="project2Modal" class="modal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('project2')">&times;</button>
-            <h2 class="modal-title">ReLive Social Media App
-            </h2>
+            <button class="modal-close" onclick="closeModal('project2Modal')">&times;</button>
+            <h2 class="modal-title">ReLive Social Media App</h2>
             <div class="modal-description">
                 <p>The ReLive App is a simple console-based social network simulation built entirely in C++ without
                     using built-in functions or STL containers. This project reflects the core concepts of OOP including
                     inheritance, encapsulation, and polymorphism, manual data handling, and structured logic design
-                    efficiently managing user data and connections.
-                </p>
+                    efficiently managing user data and connections.</p>
 
                 <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Key Features:</h4>
                 <ul style="color: #cccccc; line-height: 1.8;">
@@ -2103,143 +2600,19 @@
             </div>
             <div class="modal-details">
                 <p><strong>Technologies:</strong> C++, Object Oriented programming, Encapsulation, Polymorphism,
-                    nheritance</p>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- NEW: Service Modals -->
-    <div id="service1Modal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('service1')">&times;</button>
-            <h2 class="modal-title">Front-End Web Development</h2>
-            <div class="modal-description">
-                <p>I will create responsive landing pages and templates with HTML, CSS, JS and Bootstrap that look
-                    modern, load fast, and work perfectly on every device. Whether you need a sleek startup landing
-                    page, a product launch site, or a personal portfolio, I deliver clean, hand-coded solutions with
-                    attention to detail.</p>
-
-                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">What I Offer:</h4>
-                <ul style="color: #cccccc; line-height: 1.8;">
-                    <li>Pixel-perfect, mobile-first design using HTML5, CSS3, JavaScript, and Bootstrap</li>
-                    <li>Custom web application development</li>
-                    <li>Fully responsive layout tested on desktop, tablet, and mobile</li>
-                    <li>SEO optimization for better search engine visibility</li>
-                    <li>Cross-browser compatibility (Chrome, Safari, Firefox, Edge)</li>
-                    <li>Semantic, well-commented code ready for easy edits</li>
-                    <li>Optional contact forms, newsletter/opt-in integration, and smooth animations</li>
-                </ul>
-
-                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Technologies I Use:</h4>
-                <ul style="color: #cccccc; line-height: 1.8;">
-                    <li>HTML5</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>Bootstrap</li>
-                    <li>Tailwind</li>
-
-                </ul>
-            </div>
-            <div class="modal-details">
-                <p><strong>Starting at:</strong> $80 for basic websites</p>
-                <p><strong>Delivery Time:</strong> 2-7 days for standard sites</p>
-                <p><strong>Revisions:</strong> 5</p>
-                <a href="http://www.fiverr.com/s/kLyWvEy
-" class="service-btn" target="_blank" style="margin-top: 1.5rem;">
-                    <i class="fas fa-external-link-alt"></i>
-                    Order on Fiverr
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div id="service2Modal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('service2')">&times;</button>
-            <h2 class="modal-title">Custom Web Applications</h2>
-            <div class="modal-description">
-                <p>I develop custom web applications that solve specific business problems and streamline operations.
-                    Whether you need a CRM, project management tool, or a custom dashboard, I can build it from the
-                    ground up.</p>
-
-                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">What I Offer:</h4>
-                <ul style="color: #cccccc; line-height: 1.8;">
-                    <li>Full-stack web application development</li>
-                    <li>Database design and implementation</li>
-                    <li>User authentication and authorization systems</li>
-                    <li>Real-time features with WebSockets</li>
-                    <li>Third-party API integrations</li>
-                    <li>Deployment and DevOps setup</li>
-                </ul>
-
-                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Technologies I Use:</h4>
-                <ul style="color: #cccccc; line-height: 1.8;">
-                    <li>MERN Stack (MongoDB, Express, React, Node.js)</li>
-                    <li>Python with Django or Flask</li>
-                    <li>PostgreSQL for complex data relationships</li>
-                    <li>Redis for caching and real-time features</li>
-                    <li>Docker for containerization</li>
-                    <li>AWS, Google Cloud, or Azure for deployment</li>
-                </ul>
-            </div>
-            <div class="modal-details">
-                <p><strong>Starting at:</strong> $500 for basic applications</p>
-                <p><strong>Delivery Time:</strong> 2-4 weeks depending on complexity</p>
-                <p><strong>Support:</strong> 30 days free maintenance</p>
-                <a href="https://fiverr.com/[yourprofile]" class="service-btn" target="_blank"
-                    style="margin-top: 1.5rem;">
-                    <i class="fas fa-external-link-alt"></i>
-                    Order on Fiverr
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div id="service3Modal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('service3')">&times;</button>
-            <h2 class="modal-title">API Integration & Development</h2>
-            <div class="modal-description">
-                <p>I specialize in API development and integration services to connect your applications with
-                    third-party services, payment gateways, social media platforms, and more. I create robust, secure,
-                    and well-documented APIs.</p>
-
-                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">What I Offer:</h4>
-                <ul style="color: #cccccc; line-height: 1.8;">
-                    <li>Custom RESTful API development</li>
-                    <li>GraphQL API design and implementation</li>
-                    <li>Third-party API integration (Payment, Social Media, etc.)</li>
-                    <li>Webhook implementation</li>
-                    <li>API documentation with Swagger/OpenAPI</li>
-                    <li>API security and authentication implementation</li>
-                </ul>
-
-                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Technologies I Use:</h4>
-                <ul style="color: #cccccc; line-height: 1.8;">
-                    <li>Node.js with Express</li>
-                    <li>Python with Django REST Framework or FastAPI</li>
-                    <li>JWT for authentication</li>
-                    <li>OAuth 2.0 for third-party integrations</li>
-                    <li>Postman for testing</li>
-                    <li>Swagger for documentation</li>
-                </ul>
-            </div>
-            <div class="modal-details">
-                <p><strong>Starting at:</strong> $200 for basic integrations</p>
-                <p><strong>Delivery Time:</strong> 3-10 days depending on complexity</p>
-                <p><strong>Testing:</strong> Comprehensive test coverage included</p>
-                <a href="https://fiverr.com/[yourprofile]" class="service-btn" target="_blank"
-                    style="margin-top: 1.5rem;">
-                    <i class="fas fa-external-link-alt"></i>
-                    Order on Fiverr
-                </a>
+                    Inheritance</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="https://github.com/aliamirchoudhary/ReLive-Social-Media-App.git" class="project-btn" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Loading screen - UPDATED: Removed delay
+        // Loading screen
         window.addEventListener('load', function () {
             document.getElementById('loadingScreen').style.display = 'none';
         });
@@ -2255,7 +2628,7 @@
             icon.classList.toggle('fa-times');
         });
 
-        // Navbar scroll effect - UPDATED: Improved efficiency
+        // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         let lastScrollTop = 0;
 
@@ -2268,7 +2641,6 @@
                 navbar.classList.remove('scrolled');
             }
 
-            // Hide/show navbar on scroll
             if (scrollTop > lastScrollTop && scrollTop > 500) {
                 navbar.style.transform = 'translateY(-100%)';
             } else {
@@ -2277,7 +2649,7 @@
             lastScrollTop = scrollTop;
         });
 
-        // Smooth scrolling for navigation links - UPDATED: Improved efficiency
+        // Smooth scrolling for navigation links
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -2293,7 +2665,6 @@
                         behavior: 'smooth'
                     });
 
-                    // Close mobile menu if open
                     navMenu.classList.remove('active');
                     mobileMenuBtn.querySelector('i').classList.add('fa-bars');
                     mobileMenuBtn.querySelector('i').classList.remove('fa-times');
@@ -2312,12 +2683,10 @@
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
 
-                    // Animate skill bars when skills section is visible
                     if (entry.target.id === 'skills') {
                         animateSkillBars();
                     }
 
-                    // Staggered animation for service cards
                     if (entry.target.id === 'services') {
                         const cards = entry.target.querySelectorAll('.service-card');
                         cards.forEach((card, index) => {
@@ -2328,7 +2697,6 @@
                         });
                     }
 
-                    // Staggered animation for project cards
                     if (entry.target.id === 'projects') {
                         const cards = entry.target.querySelectorAll('.project-card');
                         cards.forEach((card, index) => {
@@ -2342,12 +2710,10 @@
             });
         }, observerOptions);
 
-        // Observe all sections
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
         });
 
-        // Initialize card animations
         document.querySelectorAll('.service-card, .project-card').forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(50px)';
@@ -2373,23 +2739,17 @@
 
         // Skills tabs functionality
         function showTab(tabName) {
-            // Hide all tab contents
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
             });
 
-            // Remove active class from all tabs
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
 
-            // Show selected tab content
             document.getElementById(tabName).classList.add('active');
-
-            // Add active class to clicked tab
             event.target.classList.add('active');
 
-            // Re-animate skill bars
             setTimeout(animateSkillBars, 100);
         }
 
@@ -2400,12 +2760,10 @@
 
             const skillBars = activeTab.querySelectorAll('.skill-progress');
 
-            // Reset all bars
             skillBars.forEach(bar => {
                 bar.style.width = '0%';
             });
 
-            // Animate bars with stagger
             skillBars.forEach((bar, index) => {
                 const targetWidth = bar.getAttribute('data-width');
                 setTimeout(() => {
@@ -2415,8 +2773,9 @@
         }
 
         // Modal functionality
-        function openModal(projectId) {
-            const modal = document.getElementById(projectId + 'Modal');
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
             modal.style.display = 'flex';
             setTimeout(() => {
                 modal.classList.add('show');
@@ -2424,8 +2783,9 @@
             document.body.style.overflow = 'hidden';
         }
 
-        function closeModal(projectId) {
-            const modal = document.getElementById(projectId + 'Modal');
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
             modal.classList.remove('show');
             setTimeout(() => {
                 modal.style.display = 'none';
@@ -2433,32 +2793,19 @@
             }, 400);
         }
 
-        // NEW: Service modal functionality
-        function openServiceModal(serviceId) {
-            const modal = document.getElementById(serviceId + 'Modal');
-            modal.style.display = 'flex';
-            setTimeout(() => {
-                modal.classList.add('show');
-            }, 10);
-            document.body.style.overflow = 'hidden';
-        }
-
         // Close modal when clicking outside
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.addEventListener('click', function (e) {
-                if (e.target === this) {
-                    const modalId = this.id.replace('Modal', '');
-                    closeModal(modalId);
-                }
-            });
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                const modalId = e.target.id;
+                closeModal(modalId);
+            }
         });
 
         // Close modal with Escape key
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 document.querySelectorAll('.modal.show').forEach(modal => {
-                    const modalId = modal.id.replace('Modal', '');
-                    closeModal(modalId);
+                    closeModal(modal.id);
                 });
             }
         });
@@ -2470,7 +2817,6 @@
             const email = formData.get('email').trim();
             const message = formData.get('message').trim();
 
-            // Enhanced validation
             if (!name || name.length < 2) {
                 e.preventDefault();
                 showNotification('Please enter a valid name (at least 2 characters)', 'error');
@@ -2490,14 +2836,11 @@
                 return;
             }
 
-            // Show loading state
             const submitBtn = this.querySelector('.submit-btn');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
 
-            // If using Formspree, let the form submit naturally
-            // The success/error handling will be done by Formspree's redirect or AJAX
             setTimeout(() => {
                 showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
                 this.reset();
@@ -2515,7 +2858,6 @@
                 ${message}
             `;
 
-            // Add notification styles
             notification.style.cssText = `
                 position: fixed;
                 top: 100px;
@@ -2559,7 +2901,6 @@
                     i++;
                     setTimeout(typing, speed);
                 } else {
-                    // Add blinking cursor
                     element.innerHTML += '<span class="typing-cursor">|</span>';
                 }
             }
@@ -2570,7 +2911,7 @@
         window.addEventListener('load', () => {
             const homeTitle = document.querySelector('.home-title');
             if (homeTitle) {
-                const originalText = 'Data Science & AI Enthusiast | Front-End Developer';
+                const originalText = 'Data Science & AI Enthusiast | Full Stack Developer | Founder of WebCraft';
                 setTimeout(() => {
                     typeWriter(homeTitle, originalText, 80);
                 }, 2000);
@@ -2587,7 +2928,7 @@
             }
         });
 
-        // Enhanced scroll event listener with debouncing
+        // Debounce function
         function debounce(func, wait) {
             let timeout;
             return function executedFunction(...args) {
@@ -2609,24 +2950,20 @@
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Premium Portfolio loaded successfully!');
-
-            // Initial setup
             updateActiveNav();
 
-            // Add entrance animation to navigation
             setTimeout(() => {
                 navbar.style.opacity = '1';
                 navbar.style.transform = 'translateY(0)';
             }, 500);
 
-            // Add subtle animations to elements
             const animatedElements = document.querySelectorAll('.service-card, .timeline-item, .skill-item');
             animatedElements.forEach((element, index) => {
                 element.style.animationDelay = `${index * 0.1}s`;
             });
         });
 
-        // Enhanced performance monitoring
+        // Performance monitoring
         if ('performance' in window) {
             window.addEventListener('load', () => {
                 setTimeout(() => {
@@ -2636,14 +2973,12 @@
             });
         }
 
-        // Add keyboard navigation support
+        // Keyboard navigation support
         document.addEventListener('keydown', function (e) {
-            // Add Tab navigation highlighting
             if (e.key === 'Tab') {
                 document.body.classList.add('keyboard-navigation');
             }
 
-            // Add keyboard shortcuts for navigation
             if (e.altKey) {
                 const shortcuts = {
                     '1': '#home',
@@ -2662,12 +2997,11 @@
             }
         });
 
-        // Remove keyboard navigation class on mouse use
         document.addEventListener('mousedown', () => {
             document.body.classList.remove('keyboard-navigation');
         });
 
-        // Add smooth reveal animations for timeline items
+        // Timeline animations
         const timelineObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
@@ -2679,7 +3013,6 @@
             });
         }, { threshold: 0.2 });
 
-        // Initialize timeline animations
         document.querySelectorAll('.timeline-item').forEach(item => {
             item.style.opacity = '0';
             item.style.transform = 'translateY(50px)';
@@ -2687,7 +3020,7 @@
             timelineObserver.observe(item);
         });
 
-        // Add loading states for external links
+        // Loading states for external links
         document.querySelectorAll('a[target="_blank"]').forEach(link => {
             link.addEventListener('click', function () {
                 const originalText = this.innerHTML;
