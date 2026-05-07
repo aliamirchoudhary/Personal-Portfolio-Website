@@ -28,6 +28,11 @@
             overflow-x: hidden;
         }
 
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
         /* Professional Loading Animation */
         .loading-screen {
             position: fixed;
@@ -164,6 +169,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
         /* UPDATED: Scrollable sections with snap scrolling */
@@ -311,6 +317,7 @@
         .home-content {
             z-index: 2;
             position: relative;
+            max-width: 92vw;
         }
 
         .home-name {
@@ -330,6 +337,7 @@
             color: #cccccc;
             margin-bottom: 2rem;
             animation: slideInUp 1s ease 0.5s both;
+            overflow-wrap: anywhere;
         }
 
         .typing-cursor {
@@ -485,6 +493,67 @@
             text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
         }
 
+        .webcraft-brand-line {
+            margin-top: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .webcraft-brand-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            color: #99ffcc;
+            text-decoration: none;
+            font-family: 'Clash Display', 'Segoe UI', sans-serif;
+            font-weight: 700;
+            font-size: 1.26rem;
+            letter-spacing: 0.02em;
+            transition: all 0.25s ease;
+        }
+
+        .webcraft-brand-link:hover {
+            color: #b8ffe0;
+            text-shadow: 0 0 12px rgba(153, 255, 204, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .webcraft-brand-icon {
+            width: 28px;
+            height: 28px;
+            flex: 0 0 auto;
+            display: block;
+        }
+
+        .webcraft-inline-link {
+            color: #99ffcc;
+            text-decoration: none;
+            font-family: 'Clash Display', 'Segoe UI', sans-serif;
+            font-weight: 700;
+            transition: all 0.25s ease;
+        }
+
+        .webcraft-inline-link:hover {
+            color: #b8ffe0;
+            text-shadow: 0 0 12px rgba(153, 255, 204, 0.25);
+        }
+
+        .webcraft-brand-svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .contact-preview .webcraft-brand-link {
+            color: #99ffcc;
+            font-family: 'Clash Display', 'Segoe UI', sans-serif;
+            font-weight: 700;
+        }
+
+        .contact-preview .webcraft-brand-link:hover {
+            color: #b8ffe0;
+        }
+
         /* Services Section */
         #services {
             padding: 8rem 2rem;
@@ -492,7 +561,7 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -766,7 +835,7 @@
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 2rem;
             max-width: 1000px;
             margin: 0 auto;
@@ -869,7 +938,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -954,6 +1023,7 @@
         .project-links {
             display: flex;
             gap: 1rem;
+            flex-wrap: wrap;
             position: relative;
             z-index: 2;
         }
@@ -969,6 +1039,7 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 8px 20px rgba(0, 119, 255, 0.3);
@@ -1335,18 +1406,42 @@
 
         /* Responsive Design */
         @media (max-width: 1024px) {
+            section {
+                min-height: auto;
+            }
+
+            #projects .projects-grid,
+            #services .services-grid,
+            #skills .skills-grid {
+                max-height: none;
+                overflow-y: visible;
+                scroll-snap-type: none;
+            }
+
             .contact-container {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
 
+            .projects-grid {
+                gap: 2rem;
+            }
+
+            .services-grid {
+                gap: 2rem;
+            }
+
             .social-links {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(4, minmax(0, 1fr));
                 justify-items: center;
             }
         }
 
         @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
             .mobile-menu-btn {
                 display: block;
             }
@@ -1368,12 +1463,18 @@
                 display: flex;
             }
 
+            .nav-menu li a {
+                width: min(90%, 320px);
+                text-align: center;
+            }
+
             .home-name {
                 font-size: 2.8rem;
+                line-height: 1.15;
             }
 
             .home-title {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
             }
 
             .section-title {
@@ -1423,6 +1524,20 @@
                 grid-template-columns: 1fr;
             }
 
+            .project-card,
+            .service-card,
+            .contact-form {
+                padding: 2rem 1.25rem;
+            }
+
+            .project-links {
+                gap: 0.75rem;
+            }
+
+            .project-btn {
+                width: 100%;
+            }
+
             .footer-content {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -1445,7 +1560,7 @@
 
             .modal-content {
                 margin: 1rem;
-                padding: 2rem;
+                padding: 1.5rem;
                 max-width: 90vw;
             }
         }
@@ -1465,11 +1580,22 @@
             }
 
             .social-links {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.9rem;
+            }
+
+            .social-link {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
             }
 
             .contact-cta {
                 font-size: 1.8rem;
+            }
+
+            section {
+                padding: 3.5rem 0.85rem;
             }
         }
 
@@ -1572,7 +1698,7 @@
             <h1 class="home-name">Muhammad Ali Aamir</h1>
             <p class="home-title">Data Science & AI Enthusiast | Full Stack Developer | Founder of WebCraft<span class="typing-cursor">|</span>
             </p>
-            <a href="#" class="cta-button" id="resumeBtn">
+            <a href="Muhammad-Ali-Aamir-Resume.pdf" class="cta-button" id="resumeBtn" download="Muhammad-Ali-Aamir-Resume.pdf">
                 <i class="fas fa-download"></i>
                 Download My Resume
             </a>
@@ -1596,7 +1722,7 @@
                     complex problems into clean, efficient code and building digital experiences that are both powerful
                     and elegant.</p>
 
-                <p>I am also the founder of <span class="about-highlight">Webcraft</span>, a professional digital brand I founded to provide high-performance, end-to-end web solutions for service-oriented businesses. My journey in technology is driven by a deep passion for creating meaningful digital experiences.
+                <p>I am also the founder of <a href="https://webcraft-dev.vercel.app" class="webcraft-inline-link" target="_blank" rel="noopener noreferrer">WebCraft</a>, a professional digital brand I founded to provide high-performance, end-to-end web solutions for service-oriented businesses. My journey in technology is driven by a deep passion for creating meaningful digital experiences.
                     Whether it's training models on real-world data, developing responsive web applications, diving into
                     machine learning algorithms, or
                     exploring the latest in AI, I approach every project with enthusiasm and dedication to excellence.
@@ -1608,9 +1734,20 @@
                         <i class="fas fa-envelope"></i> <a
                             href="mailto:aliamirchoudhary@gmail.com">aliamirchoudhary@gmail.com</a> |
                         <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/muhammad-ali-aamir2558">LinkedIn
-                            Profile</a> |
-                        <i class="fas fa-globe"></i> <a href="https://webcraft-dev.vercel.app" target="_blank">Webcraft</a>
+                            Profile</a> 
                     </p>
+                    <div class="webcraft-brand-line">
+                        <a href="https://webcraft-dev.vercel.app" class="webcraft-brand-link" target="_blank" rel="noopener noreferrer" aria-label="Visit WebCraft">
+                            <span class="webcraft-brand-icon" aria-hidden="true">
+                                <svg class="webcraft-brand-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="12,2 20,6.5 20,17.5 12,22 4,17.5 4,6.5" stroke="#99FFCC" stroke-width="1.8" stroke-linejoin="round"/>
+                                    <polygon points="12,5.4 17.1,8.4 17.1,15.6 12,18.6 6.9,15.6 6.9,8.4" stroke="#99FFCC" stroke-width="1.6" stroke-linejoin="round"/>
+                                    <text x="12" y="15.25" text-anchor="middle" font-family="Clash Display, Segoe UI, sans-serif" font-size="7.5" font-weight="700" fill="#99FFCC">W</text>
+                                </svg>
+                            </span>
+                            <span>WebCraft</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1628,7 +1765,7 @@
                     </div>
                     <h3 class="service-title">Full Stack Web Development</h3>
                     <p class="service-description">I will provide full stack high-performance, end-to-end web solutions for service-oriented businesses using React, Node.js, Flask, or MERN stack. From responsive frontend designs to scalable backend architectures.</p>
-                    <a href="https://webcraft-dev.vercel.app" class="service-btn" target="_blank" onclick="event.stopPropagation()">
+                        <a href="https://webcraft-dev.vercel.app" class="service-btn" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
                         <i class="fas fa-external-link-alt"></i>
                         Visit
                     </a>
@@ -1641,7 +1778,7 @@
                     </div>
                     <h3 class="service-title">Design to Web</h3>
                     <p class="service-description">I will build a pixel perfect responsive website from Figma to React or Tailwind. As a technical developer focused on logical optimization, I don't just "build" pages — I engineer them for speed and responsiveness.</p>
-                    <a href="https://www.fiverr.com/s/2K2ja6V" class="service-btn" target="_blank" onclick="event.stopPropagation()">
+                    <a href="https://www.fiverr.com/s/2K2ja6V" class="service-btn" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
                         <i class="fas fa-external-link-alt"></i>
                         View on Fiverr
                     </a>
@@ -1657,7 +1794,7 @@
                         JS and Bootstrap that look modern, load fast, and work perfectly on every device. Whether you
                         need a sleek startup landing page, a product launch site, or a personal portfolio, I deliver
                         clean, hand-coded solutions with attention to detail.</p>
-                    <a href="https://fiverr.com/[yourprofile]" class="service-btn" target="_blank"
+                    <a href="https://fiverr.com/[yourprofile]" class="service-btn" target="_blank" rel="noopener noreferrer"
                         onclick="event.stopPropagation()">
                         <i class="fas fa-external-link-alt"></i>
                         View on Fiverr
@@ -1938,11 +2075,11 @@
                         <span class="tag">JavaScript</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/aliamirchoudhary/Criclytics.git" class="project-btn" target="_blank" onclick="event.stopPropagation()">
+                        <a href="https://github.com/aliamirchoudhary/Criclytics.git" class="project-btn" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
                             <i class="fab fa-github"></i>
                             GitHub
                         </a>
-                        <a href="#" class="project-btn" target="_blank" onclick="event.stopPropagation()">
+                        <a href="https://criclytics.aliamirchoudhary.workers.dev/" class="project-btn" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
                             <i class="fas fa-globe"></i>
                             Visit
                         </a>
@@ -1960,7 +2097,7 @@
                         <span class="tag">Streamlit</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/aliamirchoudhary/Fashion-Image-Classifier.git" class="project-btn" target="_blank" onclick="event.stopPropagation()">
+                        <a href="https://github.com/aliamirchoudhary/Fashion-Image-Classifier.git" class="project-btn" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
                             <i class="fab fa-github"></i>
                             GitHub
                         </a>
@@ -1968,6 +2105,24 @@
                 </div>
 
                 <!-- PROJECT 3 -->
+                <div class="project-card" onclick="openModal('travelBuddyModal')">
+                    <h3 class="project-name">TravelBuddy</h3>
+                    <p class="project-description">TravelBuddy is a full-stack web application designed to revolutionize how people plan and experience travel. Built with ReactJS, NodeJS, SQL, and AI integration, the platform bridges smart trip planning with genuine social connections.</p>
+                    <div class="project-tags">
+                        <span class="tag">ReactJS</span>
+                        <span class="tag">NodeJS</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">AI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/HassanNawaz14/Travel-Buddy-.git" class="project-btn" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 4 -->
                 <div class="project-card" onclick="openModal('webcraftModal')">
                     <h3 class="project-name">Webcraft</h3>
                     <p class="project-description">WebCraft — my freelance web developer portfolio with animated UI, service showcases, order & contact forms with real email delivery via Gmail SMTP, and serverless deployment.</p>
@@ -1978,18 +2133,18 @@
                         <span class="tag">Node.js</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/aliamirchoudhary/webcraft.git" class="project-btn" target="_blank" onclick="event.stopPropagation()">
+                        <a href="https://github.com/aliamirchoudhary/webcraft.git" class="project-btn" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
                             <i class="fab fa-github"></i>
                             GitHub
                         </a>
-                        <a href="https://webcraft-dev.vercel.app" class="project-btn" target="_blank" onclick="event.stopPropagation()">
+                        <a href="https://webcraft-dev.vercel.app" class="project-btn" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
                             <i class="fas fa-globe"></i>
                             Visit
                         </a>
                     </div>
                 </div>
 
-                <!-- PROJECT 4 -->
+                <!-- PROJECT 5 -->
                 <div class="project-card" onclick="openModal('flappyModal')">
                     <h3 class="project-name">Flappy Bird Game</h3>
                     <p class="project-description">A faithful recreation of the iconic Flappy Bird game written in 16-bit assembly language for iAPX8088 processors. Navigate a bird through procedurally generated pipe obstacles with physics-based gravity and flap mechanics.</p>
@@ -2005,7 +2160,7 @@
                     </div>
                 </div>
 
-                <!-- PROJECT 5 -->
+                <!-- PROJECT 6 -->
                 <div class="project-card" onclick="openModal('bubbleModal')">
                     <h3 class="project-name">Bubble Shooter Game</h3>
                     <p class="project-description">A classic arcade-style bubble shooter game written in 16-bit assembly language for iAPX8088 processors. Control a shooter at the bottom of the screen to pop falling green bubbles before they reach you.</p>
@@ -2021,7 +2176,7 @@
                     </div>
                 </div>
 
-                <!-- PROJECT 6 - EXISTING -->
+                <!-- PROJECT 7 - EXISTING -->
                 <div class="project-card" onclick="openModal('project1Modal')">
                     <h3 class="project-name">Solar Panel System Predictor</h3>
                     <p class="project-description">Developed a C++ console-based solar energy system predictor. It
@@ -2039,7 +2194,7 @@
                     </div>
                 </div>
 
-                <!-- PROJECT 7 - EXISTING -->
+                <!-- PROJECT 8 - EXISTING -->
                 <div class="project-card" onclick="openModal('project2Modal')">
                     <h3 class="project-name">ReLive Social Media App</h3>
                     <p class="project-description">The ReLive App is a simple console-based social network simulation
@@ -2146,25 +2301,25 @@
                 <p>Crafted with passion & code</p>
             </div>
             <div class="footer-right">
-                <a href="https://www.linkedin.com/in/muhammad-ali-aamir2558" class="footer-social" title="LinkedIn">
+                <a href="https://www.linkedin.com/in/muhammad-ali-aamir2558" class="footer-social" title="LinkedIn" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://github.com/aliamirchoudhary" class="footer-social" title="GitHub">
+                <a href="https://github.com/aliamirchoudhary" class="footer-social" title="GitHub" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://www.fiverr.com/s/2Kg9QKV" class="footer-social" title="Fiverr">
+                <a href="https://www.fiverr.com/s/2Kg9QKV" class="footer-social" title="Fiverr" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-dollar-sign"></i>
                 </a>
             </div>
 
             <div class="footer-quick-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#education">Education</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
+                <a href="#home" target="_blank" rel="noopener noreferrer">Home</a>
+                <a href="#about" target="_blank" rel="noopener noreferrer">About</a>
+                <a href="#services" target="_blank" rel="noopener noreferrer">Services</a>
+                <a href="#education" target="_blank" rel="noopener noreferrer">Education</a>
+                <a href="#skills" target="_blank" rel="noopener noreferrer">Skills</a>
+                <a href="#projects" target="_blank" rel="noopener noreferrer">Projects</a>
+                <a href="#contact" target="_blank" rel="noopener noreferrer">Contact</a>
             </div>
         </div>
     </footer>
@@ -2370,6 +2525,42 @@
                 <p><strong>Dataset:</strong> Fashion-MNIST and custom curated images</p>
                 <div style="margin-top: 1.5rem;">
                     <a href="https://github.com/aliamirchoudhary/Fashion-Image-Classifier.git" class="project-btn" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="travelBuddyModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('travelBuddyModal')">&times;</button>
+            <h2 class="modal-title">TravelBuddy</h2>
+            <div class="modal-description">
+                <p>TravelBuddy is a full-stack web application designed to revolutionize how people plan and experience travel. Built with ReactJS, NodeJS, SQL, and AI integration, the platform bridges smart trip planning with genuine social connections.</p>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Key Features:</h4>
+                <ul style="color: #cccccc; line-height: 1.8;">
+                    <li>Buddy matching to connect travelers with shared goals and styles</li>
+                    <li>Vlogger and social hub for sharing journeys and community engagement</li>
+                    <li>Reviews and trust scores for transparency and reputation</li>
+                    <li>Expense sharing with multi-currency group cost management</li>
+                    <li>AI itinerary generator for personalized day-by-day planning</li>
+                    <li>Hotel and restaurant reviews with community-driven ratings</li>
+                    <li>Live currency converter for accurate budgeting</li>
+                    <li>Best routes and transport suggestions for optimized travel</li>
+                    <li>Currency and language tools for easier trip handling</li>
+                    <li>Emergency assistance and to-do lists for safety and organization</li>
+                </ul>
+
+                <h4 style="color: #0077ff; margin: 2rem 0 1rem 0;">Impact:</h4>
+                <p style="color: #cccccc; line-height: 1.8;">This project allowed me to combine backend logic, frontend design, SQL/database management, and AI-driven tools to deliver features that improve trust, budgeting, and overall travel experience.</p>
+            </div>
+            <div class="modal-details">
+                <p><strong>Technologies:</strong> ReactJS, NodeJS, Database Systems/SQL, AI</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="https://github.com/HassanNawaz14/Travel-Buddy-.git" class="project-btn" target="_blank" rel="noopener noreferrer" style="margin-right: 1rem;">
                         <i class="fab fa-github"></i>
                         GitHub
                     </a>
